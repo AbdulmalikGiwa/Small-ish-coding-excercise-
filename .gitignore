@@ -1,0 +1,11 @@
+# local environment
+.envrc
+.env
+.venv
+env
+venv
+
+# python caches
+**/__pycache__/
+**/*.pyc
+.pytest_cache
