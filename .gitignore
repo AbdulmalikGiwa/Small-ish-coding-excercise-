@@ -4,7 +4,8 @@
 .venv
 env
 venv
-
+.idea
+/.idea
 # python caches
 **/__pycache__/
 **/*.pyc
