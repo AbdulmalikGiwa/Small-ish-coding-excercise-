@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  posts:
+    build: ./posts_service
+    ports:
+      - "8000:5000"
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+      - ML_API=http://ml:5001/sentences/
+      - FLASK_ENV=development
+
+  ml:
+    build: ./ml_service
+    ports:
+      - "5001"
+
+  worker:
+    build: ./posts_service
+    command: celery -A tasks.tasks worker --loglevel=info
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+    depends_on:
+      - posts
+      - redis
+
+  redis:
+    image: redis:6-alpine
