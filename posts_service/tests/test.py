@@ -10,9 +10,10 @@ from posts_service.server.utils import build_response
 
 class CeleryTest:
     """
-    This class helps in writing tests to mock celery, the value returned from celery tasks is
+    This class helps in writing tests that mock the celery response, the value returned from celery tasks is
     received using a .get() method. and in mocking the check_foul_language task that runs on
-    the celery worker, we need something that implements .get() to be used as the return value.
+    the celery worker, we need something that implements .get() method to be used as the return value. Which is
+    what this class is, it can be initialized with different values that contain the actual response we want.
     """
 
     def __init__(self, value):
