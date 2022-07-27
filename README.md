@@ -1,3 +1,4 @@
+You may have to rename this folder before running :( if you didn't pull the contents into your own directory. For sompe reason docker compose doesn't like the "-", that's my bad. 
 # Small-ish Coding excercise
 
 This application comprises of four different services all running in different docker containers
