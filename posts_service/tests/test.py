@@ -50,7 +50,7 @@ class APITest(TestCase):
         db.drop_table("posts")
 
     @patch("posts_service.server.tasks.tasks.check_foul_language.delay")
-    def test_post_request_foul_language(self, check_foul_language):
+    def test_post_request_no_foul_language(self, check_foul_language):
         check_foul_language.return_value = CeleryTest(MLServerResponse.false.value)
         response = app.test_client().post(
             self.posts_path,
@@ -64,7 +64,7 @@ class APITest(TestCase):
         assert response.json == json_response
 
     @patch("posts_service.server.tasks.tasks.check_foul_language.delay")
-    def test_post_request_no_foul_language(self, check_foul_language):
+    def test_post_request_foul_language(self, check_foul_language):
         check_foul_language.return_value = CeleryTest(MLServerResponse.true.value)
         response = app.test_client().post(
             self.posts_path,
