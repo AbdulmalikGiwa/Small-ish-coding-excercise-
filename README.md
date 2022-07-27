@@ -1,7 +1,7 @@
 # Small-ish Coding excercise
 
 This application comprises of four different services all running in different docker containers
-within the same network, three of which are internal and only within the network.
+within the same network, three of which are internal and only open to the public network.
 
 
 ### Services
