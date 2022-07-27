@@ -11,6 +11,7 @@ from .tasks.tasks import MLServerResponse, check_foul_language
 
 
 def build_response(message="", data=None):
+    # Wraps response data to ensure consistent response
     response = {"message": message, "data": data}
     return response
 
@@ -21,6 +22,7 @@ class PostSchema(Schema):
 
 
 def validate_posts(request_data):
+    # Used to validate posts to ensure right body is sent
     schema = PostSchema()
     try:
         result = schema.load(request_data)
@@ -32,6 +34,7 @@ def validate_posts(request_data):
 
 
 def create_post(result):
+    # Adds post to database and concurrently calls ml service per paragraph
     result["hasFoulLanguage"] = None
     post_id = db.insert(result)
     paragraphs = result.get("paragraphs")
