@@ -2,7 +2,7 @@ You may have to rename this folder before running :( if you didn't pull the cont
 # Small-ish Coding excercise
 
 This application comprises of four different services all running in different docker containers
-within the same network, three of which are internal and only open to the public network.
+within the same network, three of which are internal and not open to the public network.
 
 
 ### Services
